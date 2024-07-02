@@ -1,11 +1,12 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
   color: #333; /* Text color */
 }
 
@@ -13,9 +14,12 @@ body {
   max-width: 800px;
   width: 100%;
   padding: 20px;
-  background-color: white;
+  background-color: #fff9e6; /* Light pastel yellow background */
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  overflow-y: auto; /* Maak de container scrollbaar als dat nodig is */
+  max-height: calc(100vh - 40px); /* Maximale hoogte van de container */
 }
 
 h1 {
@@ -30,24 +34,25 @@ form {
 input, button {
   padding: 10px;
   margin-right: 10px;
-  border: 1px solid  #ddd; /* Border color */
+  border: 1px solid #ff886e; /* Border color matching the gradient */
   border-radius: 4px; /* Rounded corners */
 }
 
 input {
-  background-color: #fff; /* Input background */
+  background-color: #fff; /* Light background closer to white */
   color: #333; /* Input text color */
 }
 
 button {
-  background-color: #f9f9f9; /* Button background */
-  color: black; /* Button text color */
+  background-color: #ff886e; /* Button background matching gradient */
+  color: white; /* Button text color */
   border: none; /* Remove border */
   cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 button:hover {
-  background-color: #dadada; /* Darker button background on hover */
+  background-color: #ffa07a; /* Lighter button background on hover */
 }
 
 ul {
@@ -57,14 +62,14 @@ ul {
 
 li {
   padding: 10px;
-  border: 1px solid #ddd; /* Border color */
+  border: 1px solid #ff886e; /* Border color matching the gradient */
   margin-bottom: 10px;
-  background-color: #f9f9f9; /* List item background */
+  background-color: #fff; /* List item background closer to white */
 }
 
 .schedule {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ddd; /* Border color */
-  background-color: #f9f9f9; /* Schedule background */
+  border: 1px solid #ff886e; /* Border color matching the gradient */
+  background-color: #fff; /* Schedule background closer to white */
 }
