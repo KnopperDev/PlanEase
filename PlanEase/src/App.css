@@ -1,8 +1,8 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   min-height: 100vh;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,15 +11,16 @@ body {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 100%; /* Ensure the container never exceeds the viewport width */
   width: 100%;
   padding: 20px;
   background-color: #fff9e6;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
+  margin: 20px auto; /* Center the container horizontally */
   overflow-y: auto;
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - 120px); /* Adjusted max-height */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
 h1, h2 {
@@ -30,7 +31,7 @@ h1, h2 {
 form {
   margin-bottom: 20px;
   display: flex;
-  flex-wrap: wrap;
+flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -75,6 +76,20 @@ li {
   padding: 20px;
   border: 1px solid #ff886e;
   background-color: #fff;
+}
+@media (max-width: 700px) {
+  .container {
+    margin: 10px; /* Adjusted margin for smaller screens */
+    padding: 15px; /* Adjusted padding for smaller screens */
+  }
+
+  form {
+    flex-direction: column; /* Stack inputs vertically */
+  }
+
+  input {
+    margin-bottom: 5px; /* Reduce space between inputs */
+  }
 }
 
 .task-buttons button {
