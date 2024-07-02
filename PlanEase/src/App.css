@@ -1,58 +1,64 @@
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   min-height: 100vh;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
-  color: #333; /* Text color */
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #333;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 100%; /* Ensure the container never exceeds the viewport width */
   width: 100%;
   padding: 20px;
-  background-color: #fff9e6; /* Light pastel yellow background */
+  background-color: #fff9e6;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
-  overflow-y: auto; /* Maak de container scrollbaar als dat nodig is */
-  max-height: calc(100vh - 40px); /* Maximale hoogte van de container */
+  margin: 20px auto; /* Center the container horizontally */
+  overflow-y: auto;
+  max-height: calc(100vh - 120px); /* Adjusted max-height */
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
 h1 {
   text-align: center;
-  color: #444; /* Heading color */
+  color: #444;
 }
 
 form {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Ensure inputs wrap to next line if necessary */
 }
 
-input, button {
+input,
+button {
   padding: 10px;
   margin-right: 10px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
-  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #ff886e;
+  border-radius: 4px;
 }
 
 input {
-  background-color: #fff; /* Light background closer to white */
-  color: #333; /* Input text color */
+  background-color: #fff;
+  color: #333;
+  flex: 1; /* Take up available space */
+  margin-bottom: 10px; /* Space between inputs */
 }
 
 button {
-  background-color: #ff886e; /* Button background matching gradient */
-  color: white; /* Button text color */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  background-color: #ff886e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #ffa07a; /* Lighter button background on hover */
+  background-color: #ffa07a;
 }
 
 ul {
@@ -62,14 +68,30 @@ ul {
 
 li {
   padding: 10px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
+  border: 1px solid #ff886e;
   margin-bottom: 10px;
-  background-color: #fff; /* List item background closer to white */
+  background-color: #fff;
 }
 
 .schedule {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
-  background-color: #fff; /* Schedule background closer to white */
+  border: 1px solid #ff886e;
+  background-color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .container {
+    margin: 10px; /* Adjusted margin for smaller screens */
+    padding: 15px; /* Adjusted padding for smaller screens */
+  }
+
+  form {
+    flex-direction: column; /* Stack inputs vertically */
+  }
+
+  input {
+    margin-bottom: 5px; /* Reduce space between inputs */
+  }
 }
