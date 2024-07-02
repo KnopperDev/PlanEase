@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
   const [editIndex, setEditIndex] = useState(-1);
@@ -43,7 +45,10 @@ const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
       {tasks.map((task, index) => (
         <li key={index}>
           {editIndex === index ? (
-            <form onSubmit={() => handleEditSubmit(index)}>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              handleEditSubmit(index);
+            }}>
               <input
                 type="text"
                 value={editTitle}
@@ -62,20 +67,30 @@ const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
                 onChange={(e) => setEditDeadline(e.target.value)}
                 required
               />
-              <button type="button" onClick={handleEditCancel}>Annuleren</button>
-              <button type="submit">Opslaan</button>
+              <button type="button" onClick={handleEditCancel}>
+                <FontAwesomeIcon icon={faTimes} /> {/* Annuleren met icoon */}
+              </button>
+              <button type="submit">
+                <FontAwesomeIcon icon={faCheck} /> {/* Opslaan met icoon */}
+              </button>
             </form>
           ) : (
             <div>
               <strong>{task.title}</strong> - {task.duration} uur - {task.deadline} - {task.status}
               <div>
                 {task.status !== 'done' && (
-                  <button onClick={() => handleStatusChange(index, 'done')}>Gedaan</button>
+                  <button onClick={() => handleStatusChange(index, 'done')}>
+                    <FontAwesomeIcon icon={faCheck} /> {/* Gedaan met icoon */}
+                  </button>
                 )}
                 {task.status !== 'missed' && (
-                  <button onClick={() => handleStatusChange(index, 'missed')}>Gemist</button>
+                  <button onClick={() => handleStatusChange(index, 'missed')}>
+                    <FontAwesomeIcon icon={faTimes} /> {/* Gemist met icoon */}
+                  </button>
                 )}
-                <button onClick={() => handleEditClick(index, task.title, task.duration, task.deadline)}>Bewerken</button>
+                <button onClick={() => handleEditClick(index, task.title, task.duration, task.deadline)}>
+                  <FontAwesomeIcon icon={faEdit} /> {/* Bewerken met icoon */}
+                </button>
               </div>
             </div>
           )}
