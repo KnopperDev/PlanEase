@@ -6,53 +6,56 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
-  color: #333; /* Text color */
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  color: #333;
 }
 
 .container {
   max-width: 800px;
   width: 100%;
   padding: 20px;
-  background-color: #fff9e6; /* Light pastel yellow background */
+  background-color: #fff9e6;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px auto;
-  overflow-y: auto; /* Maak de container scrollbaar als dat nodig is */
-  max-height: calc(100vh - 40px); /* Maximale hoogte van de container */
+  overflow-y: auto;
+  max-height: calc(100vh - 40px);
 }
 
-h1 {
+h1, h2 {
   text-align: center;
-  color: #444; /* Heading color */
+  color: #444;
 }
 
 form {
   margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-input, button {
+input, button, select {
   padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
-  border-radius: 4px; /* Rounded corners */
+  border: 1px solid #ff886e;
+  border-radius: 4px;
+  flex-grow: 1;
 }
 
-input {
-  background-color: #fff; /* Light background closer to white */
-  color: #333; /* Input text color */
+input, select {
+  background-color: #fff;
+  color: #333;
 }
 
 button {
-  background-color: #ff886e; /* Button background matching gradient */
-  color: white; /* Button text color */
-  border: none; /* Remove border */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  background-color: #ff886e;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #ffa07a; /* Lighter button background on hover */
+  background-color: #ffa07a;
 }
 
 ul {
@@ -62,21 +65,68 @@ ul {
 
 li {
   padding: 10px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
+  border: 1px solid #ff886e;
   margin-bottom: 10px;
-  background-color: #fff; /* List item background closer to white */
+  background-color: #fff;
 }
 
 .schedule {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ff886e; /* Border color matching the gradient */
-  background-color: #fff; /* Schedule background closer to white */
+  border: 1px solid #ff886e;
+  background-color: #fff;
 }
+
 .task-buttons button {
   background: none;
   border: none;
   padding: 5px;
   margin-left: 5px;
   cursor: pointer;
+}
+
+/* Nieuwe stijlen voor de toegevoegde elementen */
+
+#filter {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ff886e;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+.task-details {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.priority-high {
+  color: #d9534f;
+}
+
+.priority-medium {
+  color: #f0ad4e;
+}
+
+.priority-low {
+  color: #5bc0de;
+}
+
+.category {
+  font-style: italic;
+}
+
+.edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form button {
+  flex-grow: 1;
 }

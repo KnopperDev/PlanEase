@@ -3,54 +3,36 @@ import React, { useState } from 'react';
 const TaskInput = ({ addTask }) => {
   const [title, setTitle] = useState('');
   const [duration, setDuration] = useState('');
-  const [deadline, setDeadline] = useState(getTodayDate()); // Huidige datum als standaardwaarde
+  const [deadline, setDeadline] = useState(getTodayDate());
+  const [priority, setPriority] = useState('medium');
+  const [category, setCategory] = useState('personal');
 
-  // Functie om de huidige datum te krijgen in het formaat YYYY-MM-DD
   function getTodayDate() {
     const today = new Date();
-    const year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    let day = today.getDate();
-
-    // Voeg een 0 toe aan maanden/dagen kleiner dan 10 voor juiste datumnotatie
-    if (month < 10) {
-      month = '0' + month;
-    }
-    if (day < 10) {
-      day = '0' + day;
-    }
-
-    return `${year}-${month}-${day}`;
+    return today.toISOString().split('T')[0];
   }
 
-  // Functie om de maximale datum te krijgen (1 jaar vooruit)
   function getMaxDate() {
-    const today = new Date();
-    const maxDate = new Date(today.getFullYear() + 1, today.getMonth(), today.getDate());
-    const year = maxDate.getFullYear();
-    let month = maxDate.getMonth() + 1;
-    let day = maxDate.getDate();
-
-    // Voeg een 0 toe aan maanden/dagen kleiner dan 10 voor juiste datumnotatie
-    if (month < 10) {
-      month = '0' + month;
-    }
-    if (day < 10) {
-      day = '0' + day;
-    }
-
-    return `${year}-${month}-${day}`;
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() + 1);
+    return maxDate.toISOString().split('T')[0];
   }
+
+  const isValidDeadline = (date) => {
+    return new Date(date) >= new Date(getTodayDate());
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (title && duration && deadline) {
-      addTask({ title, duration, deadline, status: 'pending' });
+    if (title && duration && deadline && isValidDeadline(deadline)) {
+      addTask({ title, duration, deadline, priority, category, status: 'pending' });
       setTitle('');
       setDuration('');
-      setDeadline(getTodayDate()); // Reset de deadline naar de huidige datum
+      setDeadline(getTodayDate());
+      setPriority('medium');
+      setCategory('personal');
     } else {
-      alert('Vul alle velden in: titel, duur en deadline.');
+      alert('Vul alle velden correct in. De deadline mag niet in het verleden liggen.');
     }
   };
 
@@ -74,10 +56,20 @@ const TaskInput = ({ addTask }) => {
         type="date"
         value={deadline}
         onChange={(e) => setDeadline(e.target.value)}
-        min={getTodayDate()} // Stel de minimum datum in op de huidige datum
-        max={getMaxDate()} // Stel de maximum datum in op 1 jaar vooruit
+        min={getTodayDate()}
+        max={getMaxDate()}
         required
       />
+      <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+        <option value="high">Hoog</option>
+        <option value="medium">Gemiddeld</option>
+        <option value="low">Laag</option>
+      </select>
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option value="personal">Persoonlijk</option>
+        <option value="work">Werk</option>
+        <option value="study">Studie</option>
+      </select>
       <button type="submit">Toevoegen</button>
     </form>
   );
