@@ -1,17 +1,23 @@
 import React from 'react';
 
 const Schedule = ({ tasks }) => {
-  // Hier zou je een planning genereren op basis van de taken
+  // Filter taken die niet de status "done" hebben
+  const filteredTasks = tasks.filter(task => task.status !== 'done');
+
   return (
     <div className="schedule">
       <h2>Planning</h2>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task.title} - {task.duration} uur - {task.deadline} - {task.status}
-          </li>
-        ))}
-      </ul>
+      {filteredTasks.length === 0 ? (
+        <p>Geen taken gepland.</p>
+      ) : (
+        <ul>
+          {filteredTasks.map((task, index) => (
+            <li key={index}>
+              <strong>{task.title}</strong> - {task.duration} uur - Deadline: {task.deadline}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

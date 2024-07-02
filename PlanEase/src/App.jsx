@@ -12,17 +12,27 @@ const App = () => {
   };
 
   const updateTaskStatus = (index, status) => {
-    const updatedTasks = tasks.map((task, i) => 
+    const updatedTasks = tasks.map((task, i) =>
       i === index ? { ...task, status } : task
     );
     setTasks(updatedTasks);
+    // Hier kan de planning automatisch worden aangepast op basis van de status
+    // updatePlanning();
+  };
+
+  const editTask = (index, updatedTask) => {
+    const updatedTasks = [...tasks];
+    updatedTasks[index] = updatedTask;
+    setTasks(updatedTasks);
+    // Hier kan de planning automatisch worden aangepast op basis van de wijziging
+    // updatePlanning();
   };
 
   return (
     <div className="container">
       <h1>PlanEase</h1>
       <TaskInput addTask={addTask} />
-      <TaskList tasks={tasks} updateTaskStatus={updateTaskStatus} />
+      <TaskList tasks={tasks} updateTaskStatus={updateTaskStatus} editTask={editTask} />
       <Schedule tasks={tasks} />
     </div>
   );
