@@ -6,6 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
+  color: #333; /* Text color */
 }
 
 .container {
@@ -19,6 +20,7 @@ body {
 
 h1 {
   text-align: center;
+  color: #444; /* Heading color */
 }
 
 form {
@@ -28,6 +30,24 @@ form {
 input, button {
   padding: 10px;
   margin-right: 10px;
+  border: 1px solid  #ddd; /* Border color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+input {
+  background-color: #fff; /* Input background */
+  color: #333; /* Input text color */
+}
+
+button {
+  background-color: #007bff; /* Button background */
+  color: black; /* Button text color */
+  border: none; /* Remove border */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker button background on hover */
 }
 
 ul {
@@ -37,12 +57,14 @@ ul {
 
 li {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Border color */
   margin-bottom: 10px;
+  background-color: #f9f9f9; /* List item background */
 }
 
 .schedule {
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Border color */
+  background-color: #f9f9f9; /* Schedule background */
 }
