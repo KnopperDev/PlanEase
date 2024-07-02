@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import TaskInput from './assets/components/TaskInput';
+import TaskList from './assets/components/TaskList';
+import Schedule from './assets/components/Schedule';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  };
+
+  const updateTaskStatus = (index, status) => {
+    const updatedTasks = tasks.map((task, i) => 
+      i === index ? { ...task, status } : task
+    );
+    setTasks(updatedTasks);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="container">
+      <h1>PlanEase</h1>
+      <TaskInput addTask={addTask} />
+      <TaskList tasks={tasks} updateTaskStatus={updateTaskStatus} />
+      <Schedule tasks={tasks} />
+    </div>
+  );
+};
 
-export default App
+export default App;
