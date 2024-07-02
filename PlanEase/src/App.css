@@ -23,7 +23,7 @@ body {
   box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
-h1 {
+h1, h2 {
   text-align: center;
   color: #444;
 }
@@ -31,22 +31,20 @@ h1 {
 form {
   margin-bottom: 20px;
   display: flex;
-  flex-wrap: wrap; /* Ensure inputs wrap to next line if necessary */
+flex-wrap: wrap;
+  gap: 10px;
 }
 
-input,
-button {
+input, button, select {
   padding: 10px;
-  margin-right: 10px;
   border: 1px solid #ff886e;
   border-radius: 4px;
+  flex-grow: 1;
 }
 
-input {
+input, select {
   background-color: #fff;
   color: #333;
-  flex: 1; /* Take up available space */
-  margin-bottom: 10px; /* Space between inputs */
 }
 
 button {
@@ -79,8 +77,6 @@ li {
   border: 1px solid #ff886e;
   background-color: #fff;
 }
-
-/* Responsive adjustments */
 @media (max-width: 700px) {
   .container {
     margin: 10px; /* Adjusted margin for smaller screens */
@@ -94,4 +90,58 @@ li {
   input {
     margin-bottom: 5px; /* Reduce space between inputs */
   }
+}
+
+.task-buttons button {
+  background: none;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Nieuwe stijlen voor de toegevoegde elementen */
+
+#filter {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ff886e;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+.task-details {
+  margin-top: 5px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.priority-high {
+  color: #d9534f;
+}
+
+.priority-medium {
+  color: #f0ad4e;
+}
+
+.priority-low {
+  color: #5bc0de;
+}
+
+.category {
+  font-style: italic;
+}
+
+.edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form button {
+  flex-grow: 1;
 }
