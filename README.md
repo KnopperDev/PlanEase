@@ -1,2 +1,4 @@
 # PlanEase
-easy planner
+Dit project is gemaakt volledig met ai!
+
+Niels, Khalil, Nick
