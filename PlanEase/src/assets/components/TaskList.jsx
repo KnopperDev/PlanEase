@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faTimes, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTimes, faEdit, faSave, faUndo } from '@fortawesome/free-solid-svg-icons';
 
 const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
   const [editIndex, setEditIndex] = useState(-1);
@@ -41,14 +41,14 @@ const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
   };
 
   return (
-    <ul>
+    <ul className="task-list">
       {tasks.map((task, index) => (
-        <li key={index}>
+        <li key={index} className={`task-item priority-${task.priority}`}>
           {editIndex === index ? (
             <form onSubmit={(e) => {
               e.preventDefault();
               handleEditSubmit(index);
-            }}>
+            }} className="edit-form">
               <input
                 type="text"
                 value={editTitle}
@@ -77,31 +77,38 @@ const TaskList = ({ tasks, updateTaskStatus, editTask }) => {
                 <option value="work">Werk</option>
                 <option value="study">Studie</option>
               </select>
-              <button type="button" onClick={handleEditCancel}>
+              <button type="button" onClick={handleEditCancel} className="btn2 btn-cancel">
                 <FontAwesomeIcon icon={faTimes} />
               </button>
-              <button type="submit">
-                <FontAwesomeIcon icon={faCheck} />
+              <button type="submit" className="btn2 btn-save">
+                <FontAwesomeIcon icon={faSave} />
               </button>
             </form>
           ) : (
-            <div>
-              <strong>{task.title}</strong> - {task.duration} uur - {task.deadline} - {task.status}
-              <div className={`task-details priority-${task.priority}`}>
-                Prioriteit: {task.priority} - <span className="category">Categorie: {task.category}</span>
+            <div className="task-content">
+              <div className="task-info">
+                <strong>{task.title}</strong> - {task.duration} uur - {task.deadline} - {task.status}
+                <div className="task-details">
+                  Prioriteit: {task.priority} - <span className="category">Categorie: {task.category}</span>
+                </div>
               </div>
-              <div className="task-buttons">
+              <div className="task-actions">
                 {task.status !== 'done' && (
-                  <button onClick={() => handleStatusChange(index, 'done')}>
+                  <button onClick={() => handleStatusChange(index, 'done')} className="btn btn-done" title="Markeer als afgerond">
                     <FontAwesomeIcon icon={faCheck} />
                   </button>
                 )}
                 {task.status !== 'missed' && (
-                  <button onClick={() => handleStatusChange(index, 'missed')}>
+                  <button onClick={() => handleStatusChange(index, 'missed')} className="btn btn-missed" title="Markeer als gemist">
                     <FontAwesomeIcon icon={faTimes} />
                   </button>
                 )}
-                <button onClick={() => handleEditClick(index, task)}>
+                {(task.status === 'done' || task.status === 'missed') && (
+                  <button onClick={() => handleStatusChange(index, 'pending')} className="btn btn-undo" title="Markeer als openstaand">
+                    <FontAwesomeIcon icon={faUndo} />
+                  </button>
+                )}
+                <button onClick={() => handleEditClick(index, task)} className="btn btn-edit" title="Bewerk taak">
                   <FontAwesomeIcon icon={faEdit} />
                 </button>
               </div>

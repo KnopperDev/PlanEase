@@ -145,3 +145,57 @@ li {
 .edit-form button {
   flex-grow: 1;
 }
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.task-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1rem;
+}
+.btn2 {
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.btn-done { color: green; }
+.btn-missed { color: red; }
+.btn-edit { color: blue; }
+.btn-undo { color: orange; }
+
+.edit-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-form input,
+.edit-form select {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
