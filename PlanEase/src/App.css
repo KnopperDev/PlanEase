@@ -103,7 +103,8 @@ li {
 /* Nieuwe stijlen voor de toegevoegde elementen */
 
 #filter {
-  margin-bottom: 20px;
+  width: 11%;
+  margin: 0 20px 20px 0;
   padding: 10px;
   border: 1px solid #ff886e;
   border-radius: 4px;
