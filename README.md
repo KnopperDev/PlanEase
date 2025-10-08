@@ -1,4 +1,4 @@
 # PlanEase
-Dit project is gemaakt volledig met ai!
+Een easy to use planning tool
 
 Niels, Khalil, Nick
