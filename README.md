@@ -1,4 +1,4 @@
 # PlanEase
-Een easy to use planning tool
+an easy to use planning tool made within 3 days.
 
-Niels, Khalil, Nick
+Niels, Nick
